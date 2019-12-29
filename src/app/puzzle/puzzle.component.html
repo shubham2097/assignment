@@ -1,0 +1,27 @@
+<div class="container-fluid">
+  <h2 class="text-center">
+    Assignment Puzzle
+  </h2>
+  <form [formGroup]="assignmentForm" (ngSubmit)="onSubmit()">
+    <!-- {{assignmentForm.value | json }} -->
+
+    <div class="form-group">
+      <label>Input String</label>
+      <input
+        type="text"
+        formControlName="inputString"
+        class="form-control"
+        placeholder="Enter a string"
+        [class.is-invalid]="inputString.invalid && inputString.touched"
+      />
+    </div>
+    <div *ngIf="inputString.invalid && inputString.touched">
+      <p class="alert alert-danger" *ngIf="inputString.errors.required">
+        required
+      </p>
+    </div>
+    <button type="submit" class="btn btn-secondary btn-block">Submit</button>
+  </form>
+  <br/>
+    {{output}}
+</div>
